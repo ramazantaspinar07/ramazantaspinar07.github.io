@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial,sans-serif;
+        }
+        canvas{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>CANAVAS İLE ÇİZİM</h1>
+    <canvas id="myCanvas"width="1000"height="1000"></canvas>
+    
+    <script>
+        var canvas=document.getElementById("myCanvas");
+        var ctx=canvas.getContext("2d");
+
+
+        //kare
+        ctx.fillStyle="red";
+        ctx.fillRect(50,50,400,300);
+
+
+        //çizgi
+        ctx.strokeStyle="blue";
+        ctx.lineWidth=5;
+        ctx.beginPath();
+        ctx.moveTo(50,50)
+        ctx.lineTo(450,350);
+        ctx.stroke();
+
+        //çember
+        ctx.beginPath();
+        ctx.arc(150,550,75,0,2*Math.PI);
+        ctx.strokeStyle="black"//kenarı s,iyh  yapar
+        ctx.fillStyle='lightblue';
+        ctx.fill();
+        ctx.stroke();
+
+        //çizgi
+        ctx.strokeStyle="blue";
+        ctx.lineWidth=5;
+        ctx.beginPath();
+        ctx.moveTo(50,350)
+        ctx.lineTo(450,50);
+        ctx.stroke();
+
+
+        //yazı
+        ctx.fillStyle="black";
+        ctx.font="30px Arial";
+        ctx.fillText("canvas örnegi",150,450)
+    </script>
+</body>
+</html>
