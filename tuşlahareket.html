@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Basit Canvas Oyunu</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+        }
+        canvas {
+            border: 2px solid #000;
+            background-color: #eef;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basit Canvas Oyunu</h1>
+    <p>Ok tuşlarıyla kutuyu hareket ettir!</p>
+    <canvas id="oyunAlani" width="600" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('oyunAlani');
+        const ctx = canvas.getContext('2d');
+
+        let x = 50;
+        let y = 50;
+        const boxSize = 30;
+        const speed = 5;
+        let x1 = 250;
+        let y1 = 250;
+        const boxSize1 = 30;
+        const speed1 = 5;
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'red';
+            ctx.fillRect(x, y, boxSize, boxSize);
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(x1, y1, boxSize1, boxSize1);
+        }
+
+        function updatePosition(e) {
+            switch (e.key) {
+                case "ArrowUp":
+                    if (y > 0) y -= speed;
+                    break;
+                case "ArrowDown":
+                    if (y + boxSize < canvas.height) y += speed;
+                    break;
+                case "ArrowLeft":
+                    if (x > 0) x -= speed;
+                    break;
+                case "ArrowRight":
+                    if (x + boxSize < canvas.width) x += speed;
+                    break;
+            }
+            draw();
+        }
+        function updatePosition1(e) {
+            switch (e.key) {
+                case "w":
+                    if (y1 > 0) y1 -= speed1;
+                    break;
+                case "s":
+                    if (y1 + boxSize1 < canvas.height) y1 += speed1;
+                    break;
+                case "a":
+                    if (x1 > 0) x1 -= speed1;
+                    break;
+                case "d":
+                    if (x1 + boxSize1 < canvas.width) x1 += speed1;
+                    break;
+            }
+            draw();
+        }
+        window.addEventListener('keydown', updatePosition);
+        window.addEventListener('keydown', updatePosition1);
+        draw();
+
+    </script>
+</body>
+</html>
